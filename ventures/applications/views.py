@@ -1,8 +1,8 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
-from ventures.volunteers.forms import InfoForm
-from ventures.volunteers.models import Volunteer
+from ventures.applications.forms import InfoForm
+from ventures.applications.models import Application
 
 
 def index(request):
@@ -12,10 +12,11 @@ def index(request):
             form.save()
             return HttpResponse('Thank you!')
         else:
-            return render_to_response('volunteers/info_form.html', {
-                                      'form': form},
+            return render_to_response('applications/info_form.html',
+                                      {'form': form},
                                       context_instance=RequestContext(request))
     else:
         form = InfoForm()
-        return render_to_response('volunteers/info_form.html', {'form': form},
+        return render_to_response('applications/info_form.html',
+                                  {'form': form},
                                   context_instance=RequestContext(request))

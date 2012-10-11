@@ -7,8 +7,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^applications/', include(
+                           'ventures.applications.urls')),
+                       url(r'^resources/', include(
+                           'ventures.resources.urls')),
                        url(r'^volunteers/', include(
                            'ventures.volunteers.urls')),
+                       url(r'^judges/', include(
+                           'ventures.judges.urls')),
                        )
 
 if settings.DEBUG:

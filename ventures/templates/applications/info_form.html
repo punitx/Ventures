@@ -1,0 +1,30 @@
+<html>
+	<body>
+        <h1>Please fill the form below</h1>
+        {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+        {% endif %}
+        <form action="" method="post" onsubmit="return checkCheckBox(this)">
+			{% csrf_token %} 
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="checkbox" name="agree" > Yes,
+            I agree with the <a href="#" >Terms & Conditions.</a><br>
+            <input type="submit" value="Submit Form">
+        </form>
+    </body>
+    <script language=JavaScript>
+        function checkCheckBox(f){
+            if (f.agree.checked == false )
+            {
+                alert('Please acccept the terms and conditions before you continue.');
+                return false;
+            }else
+                return true;
+            }
+    </script>
+</html>
+
